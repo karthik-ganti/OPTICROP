@@ -6,7 +6,9 @@ services:
     runtime: python
     plan: free
     buildCommand: pip install -r requirements.txt
-    startCommand: gunicorn app:app --bind 0.0.0.0:$PORT
+    # Single worker + threads keeps memory within the free tier's 512 MB
+    # (each worker loads scikit-learn + the model; multiple workers OOM-loop).
+    startCommand: gunicorn app:app --bind 0.0.0.0:$PORT --workers 1 --threads 4 --timeout 120
     envVars:
       - key: PYTHON_VERSION
         value: 3.12.4
