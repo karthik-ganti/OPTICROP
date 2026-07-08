@@ -1,0 +1,100 @@
+{% extends "base.html" %}
+{% block title %}Recommendation — OptiCrop{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-lg-9">
+
+        <!-- Recommendation banner -->
+        <div class="oc-result-card oc-result-success p-4 p-md-5 text-center mb-4">
+            <div class="oc-result-emoji">{{ info.emoji }}</div>
+            <p class="text-uppercase mb-1 opacity-75 fw-semibold" style="letter-spacing: 2px;">Recommended Crop</p>
+            <h1 class="display-4 fw-bold text-capitalize mb-3">{{ recommended }}</h1>
+            <div class="oc-conf-badge">
+                <span class="oc-conf-number">{{ confidence }}%</span>
+                <span class="oc-conf-label">Confidence</span>
+            </div>
+        </div>
+
+        <div class="row g-4">
+            <!-- Crop guidance -->
+            <div class="col-md-7">
+                <div class="card border-0 shadow-sm h-100">
+                    <div class="card-body p-4">
+                        <h5 class="fw-bold mb-3"><i class="bi bi-journal-text text-success me-2"></i>About this Crop</h5>
+                        <div class="row row-cols-2 g-3 mb-3">
+                            <div class="col">
+                                <div class="oc-fact-label">Type</div>
+                                <div class="oc-fact-value">{{ info.crop_type }}</div>
+                            </div>
+                            <div class="col">
+                                <div class="oc-fact-label">Season</div>
+                                <div class="oc-fact-value">{{ info.season }}</div>
+                            </div>
+                            <div class="col">
+                                <div class="oc-fact-label">Optimal pH</div>
+                                <div class="oc-fact-value">{{ info.optimal_ph }}</div>
+                            </div>
+                            <div class="col">
+                                <div class="oc-fact-label">Water Need</div>
+                                <div class="oc-fact-value">{{ info.water_requirement }}</div>
+                            </div>
+                        </div>
+                        <div class="alert oc-tip-alert mb-0">
+                            <i class="bi bi-lightbulb-fill me-2"></i>{{ info.tips }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Alternatives -->
+            <div class="col-md-5">
+                <div class="card border-0 shadow-sm h-100">
+                    <div class="card-body p-4">
+                        <h5 class="fw-bold mb-3"><i class="bi bi-list-ol text-success me-2"></i>Top Matches</h5>
+                        {% for crop, prob in top3 %}
+                        <div class="mb-3">
+                            <div class="d-flex justify-content-between small mb-1">
+                                <span class="text-capitalize fw-semibold">{{ loop.index }}. {{ crop }}</span>
+                                <span class="text-muted">{{ prob }}%</span>
+                            </div>
+                            <div class="progress oc-progress" role="progressbar">
+                                <div class="progress-bar {% if loop.first %}oc-bar-primary{% else %}oc-bar-muted{% endif %}"
+                                     style="width: {{ prob }}%;"></div>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Inputs summary -->
+        <div class="card border-0 shadow-sm mt-4">
+            <div class="card-body p-4">
+                <h6 class="fw-bold mb-3"><i class="bi bi-sliders text-muted me-2"></i>Your Inputs</h6>
+                <div class="row row-cols-2 row-cols-md-4 g-3">
+                    {% for label, value in inputs.items() %}
+                    <div class="col">
+                        <div class="oc-input-chip">
+                            <div class="oc-fact-label">{{ label }}</div>
+                            <div class="oc-fact-value">{{ value }}</div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+
+        <div class="d-flex gap-3 justify-content-center mt-4 flex-wrap">
+            <a href="{{ url_for('predict_form') }}" class="btn oc-btn-primary px-4">
+                <i class="bi bi-arrow-repeat me-2"></i>New Prediction
+            </a>
+            <a href="{{ url_for('history') }}" class="btn btn-outline-success px-4">
+                <i class="bi bi-clock-history me-2"></i>View History
+            </a>
+        </div>
+
+    </div>
+</div>
+{% endblock %}

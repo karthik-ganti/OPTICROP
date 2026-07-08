@@ -1,0 +1,138 @@
+{% extends "base.html" %}
+{% block title %}OptiCrop — Smart Crop Recommendation{% endblock %}
+
+{% block content %}
+<!-- Hero -->
+<section class="oc-hero text-white text-center">
+    <div class="container">
+        <span class="badge oc-hero-badge mb-3"><i class="bi bi-cpu me-1"></i>Powered by Machine Learning</span>
+        <h1 class="display-4 fw-bold mb-3">Grow the Right Crop, Every Time</h1>
+        <p class="lead mb-4 mx-auto" style="max-width: 680px;">
+            OptiCrop analyzes your soil nutrients and local climate to recommend the crop
+            best suited for maximum yield, efficient resource use, and sustainable farming.
+        </p>
+        <div class="d-flex gap-3 justify-content-center flex-wrap">
+            {% if current_user.is_authenticated %}
+            <a href="{{ url_for('predict_form') }}" class="btn btn-light btn-lg px-4">
+                <i class="bi bi-search-heart me-2"></i>Find Your Crop
+            </a>
+            {% else %}
+            <a href="{{ url_for('register') }}" class="btn btn-light btn-lg px-4">
+                <i class="bi bi-person-plus me-2"></i>Get Started
+            </a>
+            <a href="{{ url_for('about') }}" class="btn btn-outline-light btn-lg px-4">
+                <i class="bi bi-info-circle me-2"></i>Learn More
+            </a>
+            {% endif %}
+        </div>
+    </div>
+</section>
+
+<!-- Stats -->
+<section class="container my-5">
+    <div class="row g-4 justify-content-center">
+        <div class="col-6 col-md-3">
+            <div class="oc-stat-card text-center p-4 h-100">
+                <div class="oc-stat-number" data-target="{{ accuracy }}" data-decimals="2">0</div>
+                <div class="oc-stat-label">% Model Accuracy</div>
+            </div>
+        </div>
+        <div class="col-6 col-md-3">
+            <div class="oc-stat-card text-center p-4 h-100">
+                <div class="oc-stat-number" data-target="22">0</div>
+                <div class="oc-stat-label">Crops Supported</div>
+            </div>
+        </div>
+        <div class="col-6 col-md-3">
+            <div class="oc-stat-card text-center p-4 h-100">
+                <div class="oc-stat-number" data-target="7">0</div>
+                <div class="oc-stat-label">Soil &amp; Climate Inputs</div>
+            </div>
+        </div>
+        <div class="col-6 col-md-3">
+            <div class="oc-stat-card text-center p-4 h-100">
+                <div class="oc-stat-number" data-target="4">0</div>
+                <div class="oc-stat-label">ML Algorithms Compared</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- How it works -->
+<section class="container my-5">
+    <h2 class="text-center fw-bold mb-2">How It Works</h2>
+    <p class="text-center text-muted mb-5">From soil sample to smart recommendation in four steps.</p>
+    <div class="row g-4">
+        <div class="col-md-3 text-center">
+            <div class="oc-step-circle mx-auto mb-3">1</div>
+            <h6 class="fw-bold">Enter Soil Data</h6>
+            <p class="text-muted small">Provide N, P, K, temperature, humidity, pH and rainfall for your field.</p>
+        </div>
+        <div class="col-md-3 text-center">
+            <div class="oc-step-circle mx-auto mb-3">2</div>
+            <h6 class="fw-bold">ML Analysis</h6>
+            <p class="text-muted small">A trained Random Forest model evaluates your conditions against 22 crops.</p>
+        </div>
+        <div class="col-md-3 text-center">
+            <div class="oc-step-circle mx-auto mb-3">3</div>
+            <h6 class="fw-bold">Get Recommendation</h6>
+            <p class="text-muted small">Receive the best-suited crop with a confidence score and alternatives.</p>
+        </div>
+        <div class="col-md-3 text-center">
+            <div class="oc-step-circle mx-auto mb-3">4</div>
+            <h6 class="fw-bold">Plan &amp; Grow</h6>
+            <p class="text-muted small">Use the agronomic tips to plan sowing, watering and soil management.</p>
+        </div>
+    </div>
+</section>
+
+<!-- Use cases -->
+<section class="container my-5">
+    <h2 class="text-center fw-bold mb-5">Who Benefits from OptiCrop</h2>
+    <div class="row g-4">
+        <div class="col-md-4">
+            <div class="card oc-scenario-card border-0 shadow-sm h-100">
+                <div class="card-body p-4">
+                    <div class="oc-icon-badge oc-badge-green mb-3"><i class="bi bi-tractor fs-4"></i></div>
+                    <h5 class="fw-bold">Smart Crop Recommendation</h5>
+                    <p class="text-muted mb-0">Farmers enter soil and weather details and instantly learn which crop
+                        will deliver the best yield for their land.</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card oc-scenario-card border-0 shadow-sm h-100">
+                <div class="card-body p-4">
+                    <div class="oc-icon-badge oc-badge-earth mb-3"><i class="bi bi-clipboard-data fs-4"></i></div>
+                    <h5 class="fw-bold">Suitability Assessment</h5>
+                    <p class="text-muted mb-0">Assess whether current soil and climate conditions are suitable for a
+                        crop, and understand its productivity potential.</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card oc-scenario-card border-0 shadow-sm h-100">
+                <div class="card-body p-4">
+                    <div class="oc-icon-badge oc-badge-sky mb-3"><i class="bi bi-graph-up-arrow fs-4"></i></div>
+                    <h5 class="fw-bold">Research &amp; Policy Planning</h5>
+                    <p class="text-muted mb-0">Researchers and policymakers analyze crop–environment relationships to
+                        shape sustainable, data-driven agricultural strategies.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- CTA -->
+{% if not current_user.is_authenticated %}
+<section class="container my-5">
+    <div class="oc-cta-section text-center text-white p-5">
+        <h3 class="fw-bold mb-3">Ready to optimize your harvest?</h3>
+        <p class="mb-4 opacity-75">Create a free account and get your first crop recommendation in seconds.</p>
+        <a href="{{ url_for('register') }}" class="btn btn-light btn-lg px-4">
+            <i class="bi bi-person-plus me-2"></i>Create Account
+        </a>
+    </div>
+</section>
+{% endif %}
+{% endblock %}

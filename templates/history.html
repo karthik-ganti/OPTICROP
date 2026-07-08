@@ -1,0 +1,68 @@
+{% extends "base.html" %}
+{% block title %}Prediction History — OptiCrop{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="d-flex justify-content-between align-items-center mb-4 flex-wrap gap-2">
+        <div>
+            <h3 class="fw-bold mb-0"><i class="bi bi-clock-history text-success me-2"></i>Prediction History</h3>
+            <p class="text-muted mb-0 small">Your past crop recommendations.</p>
+        </div>
+        <a href="{{ url_for('predict_form') }}" class="btn oc-btn-primary">
+            <i class="bi bi-plus-lg me-1"></i>New Prediction
+        </a>
+    </div>
+
+    {% if records %}
+    <div class="card border-0 shadow-sm">
+        <div class="table-responsive">
+            <table class="table table-hover align-middle mb-0">
+                <thead class="oc-table-header">
+                    <tr>
+                        <th>Date</th>
+                        <th>N</th><th>P</th><th>K</th>
+                        <th>Temp</th><th>Humidity</th><th>pH</th><th>Rainfall</th>
+                        <th>Recommended</th>
+                        <th>Confidence</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for soil, pred in records %}
+                    <tr>
+                        <td class="small text-muted">{{ pred.prediction_date.strftime('%d %b %Y, %H:%M') }}</td>
+                        <td>{{ soil.nitrogen }}</td>
+                        <td>{{ soil.phosphorus }}</td>
+                        <td>{{ soil.potassium }}</td>
+                        <td>{{ soil.temperature }}</td>
+                        <td>{{ soil.humidity }}</td>
+                        <td>{{ soil.ph }}</td>
+                        <td>{{ soil.rainfall }}</td>
+                        <td>
+                            <span class="fw-semibold text-capitalize">
+                                {{ crop_info.get(pred.recommended_crop, {}).get('emoji', '🌱') }}
+                                {{ pred.recommended_crop }}
+                            </span>
+                        </td>
+                        <td>
+                            <span class="badge oc-badge-conf">{{ pred.confidence_score }}%</span>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+    {% else %}
+    <div class="card border-0 shadow-sm">
+        <div class="card-body text-center py-5">
+            <i class="bi bi-inbox display-1 text-muted opacity-50"></i>
+            <h5 class="fw-bold mt-3">No predictions yet</h5>
+            <p class="text-muted">Run your first crop recommendation to see it here.</p>
+            <a href="{{ url_for('predict_form') }}" class="btn oc-btn-primary px-4">
+                <i class="bi bi-search-heart me-2"></i>Find Your Crop
+            </a>
+        </div>
+    </div>
+    {% endif %}
+</div>
+{% endblock %}

@@ -1,0 +1,99 @@
+{% extends "base.html" %}
+{% block title %}About — OptiCrop{% endblock %}
+
+{% block content %}
+<div class="oc-page-header text-white text-center py-5 mb-4">
+    <div class="container">
+        <h1 class="fw-bold mb-2"><i class="bi bi-info-circle me-2"></i>About OptiCrop</h1>
+        <p class="lead mb-0 opacity-75">Smart Agricultural Production Optimization Engine</p>
+    </div>
+</div>
+
+<div class="container pb-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-9">
+
+            <div class="card border-0 shadow-sm mb-4">
+                <div class="card-body p-4 p-md-5">
+                    <h4 class="fw-bold mb-3">The Problem</h4>
+                    <p class="text-muted">
+                        Choosing the wrong crop for a plot of land leads to low yields, wasted water and
+                        fertilizer, and financial loss. Farmers must weigh soil nutrients, climate and
+                        seasonal conditions — a complex decision that OptiCrop makes simple and data-driven.
+                    </p>
+
+                    <h4 class="fw-bold mb-3 mt-4">Our Approach</h4>
+                    <p class="text-muted">
+                        OptiCrop integrates key environmental factors — Nitrogen (N), Phosphorus (P),
+                        Potassium (K), temperature, humidity, pH and rainfall — and applies machine
+                        learning to recommend the most suitable crop for maximum yield and resource
+                        efficiency. The system is trained on a labelled agricultural dataset covering
+                        <strong>22 crops</strong> and compares four algorithms, deploying the most accurate.
+                    </p>
+                </div>
+            </div>
+
+            <div class="row g-4 mb-4">
+                <div class="col-md-6">
+                    <div class="card border-0 shadow-sm h-100">
+                        <div class="card-body p-4">
+                            <h5 class="fw-bold mb-3"><i class="bi bi-cpu text-success me-2"></i>The Model</h5>
+                            <p class="text-muted mb-3">
+                                Four classifiers were trained and compared — K-Nearest Neighbors,
+                                Logistic Regression, Decision Tree and Random Forest — alongside a
+                                K-Means clustering analysis of soil patterns.
+                            </p>
+                            <ul class="list-unstyled mb-0">
+                                <li class="mb-2"><i class="bi bi-check-circle-fill text-success me-2"></i>Deployed model: <strong>{{ algorithm }}</strong></li>
+                                <li class="mb-2"><i class="bi bi-check-circle-fill text-success me-2"></i>Accuracy: <strong>{{ accuracy }}%</strong></li>
+                                <li><i class="bi bi-check-circle-fill text-success me-2"></i>Saved and served with <strong>pickle</strong></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="card border-0 shadow-sm h-100">
+                        <div class="card-body p-4">
+                            <h5 class="fw-bold mb-3"><i class="bi bi-clipboard-check text-success me-2"></i>Input Parameters</h5>
+                            <div class="row row-cols-2 g-2">
+                                <div class="col"><span class="oc-param-chip">Nitrogen (N)</span></div>
+                                <div class="col"><span class="oc-param-chip">Phosphorus (P)</span></div>
+                                <div class="col"><span class="oc-param-chip">Potassium (K)</span></div>
+                                <div class="col"><span class="oc-param-chip">Temperature</span></div>
+                                <div class="col"><span class="oc-param-chip">Humidity</span></div>
+                                <div class="col"><span class="oc-param-chip">pH Level</span></div>
+                                <div class="col"><span class="oc-param-chip">Rainfall</span></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card border-0 shadow-sm mb-4">
+                <div class="card-body p-4 p-md-5 text-center">
+                    <h5 class="fw-bold mb-3">Classifier Comparison</h5>
+                    <img src="{{ url_for('static', filename='images/model_comparison.png') }}"
+                         alt="Model accuracy comparison" class="img-fluid rounded oc-analysis-img"
+                         onerror="this.style.display='none'; document.getElementById('cmp-fallback').style.display='block';">
+                    <p id="cmp-fallback" class="text-muted small" style="display:none;">
+                        Run <code>python train_model.py</code> to generate the comparison chart.
+                    </p>
+                </div>
+            </div>
+
+            <div class="card border-0 shadow-sm">
+                <div class="card-body p-4 p-md-5">
+                    <h4 class="fw-bold mb-3">Impact</h4>
+                    <p class="text-muted mb-0">
+                        By matching crops to conditions, OptiCrop helps improve productivity and profitability,
+                        optimize the use of water and fertilizers, reduce crop-failure risk, and support
+                        sustainable, precision-farming practices — benefiting farmers, agribusiness,
+                        researchers and policymakers alike.
+                    </p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+{% endblock %}

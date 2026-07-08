@@ -1,0 +1,168 @@
+/* ─── Base / palette ───────────────────────────────────── */
+:root {
+    --oc-primary:   #1b5e20;   /* deep leaf green */
+    --oc-secondary: #2e7d32;   /* green */
+    --oc-accent:    #8bc34a;   /* light green */
+    --oc-soil:      #795548;    /* earth brown */
+    --oc-sky:       #0ea5e9;    /* sky accent */
+    --oc-cream:     #f4f7f0;    /* soft field background */
+}
+
+body {
+    background-color: var(--oc-cream);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #1f2a24;
+}
+
+/* ─── Navbar ────────────────────────────────────────────── */
+.oc-navbar {
+    background: linear-gradient(135deg, var(--oc-primary) 0%, #2e7d32 100%);
+    box-shadow: 0 2px 12px rgba(0,0,0,0.15);
+    padding: 0.75rem 0;
+}
+.oc-navbar .navbar-brand { font-size: 1.35rem; letter-spacing: 0.5px; }
+.oc-navbar .nav-link { font-weight: 500; transition: color 0.2s; }
+.oc-navbar .nav-link:hover { color: var(--oc-accent) !important; }
+
+/* ─── Hero ──────────────────────────────────────────────── */
+.oc-hero {
+    background: linear-gradient(135deg, #1b5e20 0%, #2e7d32 55%, #43a047 100%);
+    border-radius: 0 0 2rem 2rem;
+    padding: 5rem 1rem;
+    margin-top: -1rem;
+}
+.oc-hero-badge {
+    background: rgba(255,255,255,0.18);
+    color: #fff;
+    font-weight: 500;
+    padding: 0.5em 1em;
+    border-radius: 2rem;
+}
+.oc-hero .btn-light { color: var(--oc-primary); font-weight: 600; transition: transform 0.2s, box-shadow 0.2s; }
+.oc-hero .btn-light:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(0,0,0,0.2) !important; }
+
+/* ─── Page header (About / secondary pages) ─────────────── */
+.oc-page-header {
+    background: linear-gradient(135deg, var(--oc-primary) 0%, #388e3c 100%);
+    margin-top: -1rem;
+    border-radius: 0 0 1.5rem 1.5rem;
+}
+
+/* ─── Stats ─────────────────────────────────────────────── */
+.oc-stat-card {
+    background: #fff;
+    border-radius: 1rem;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.07);
+    transition: transform 0.2s;
+}
+.oc-stat-card:hover { transform: translateY(-4px); }
+.oc-stat-number { font-size: 2.6rem; font-weight: 800; color: var(--oc-secondary); line-height: 1; }
+.oc-stat-label { font-size: 0.85rem; color: #64748b; margin-top: 0.4rem; font-weight: 500; }
+
+/* ─── Steps ─────────────────────────────────────────────── */
+.oc-step-circle {
+    width: 56px; height: 56px; border-radius: 50%;
+    background: var(--oc-secondary); color: #fff;
+    font-size: 1.4rem; font-weight: 700;
+    display: flex; align-items: center; justify-content: center;
+    box-shadow: 0 4px 12px rgba(46,125,50,0.35);
+}
+
+/* ─── Scenario cards ────────────────────────────────────── */
+.oc-scenario-card { border-radius: 1rem !important; transition: transform 0.2s, box-shadow 0.2s; }
+.oc-scenario-card:hover { transform: translateY(-4px); box-shadow: 0 8px 24px rgba(0,0,0,0.12) !important; }
+.oc-icon-badge {
+    width: 52px; height: 52px; border-radius: 12px;
+    display: flex; align-items: center; justify-content: center; color: #fff;
+}
+.oc-badge-green { background: linear-gradient(135deg, #2e7d32, #43a047); }
+.oc-badge-earth { background: linear-gradient(135deg, #795548, #a1887f); }
+.oc-badge-sky   { background: linear-gradient(135deg, #0288d1, #4fc3f7); }
+
+/* ─── CTA ───────────────────────────────────────────────── */
+.oc-cta-section {
+    background: linear-gradient(135deg, #14311a 0%, var(--oc-primary) 100%);
+    border-radius: 1.5rem;
+}
+
+/* ─── About page bits ───────────────────────────────────── */
+.oc-param-chip {
+    display: block;
+    background: #eef5e8;
+    color: var(--oc-primary);
+    border: 1px solid #d6e6c9;
+    border-radius: 0.5rem;
+    padding: 0.4rem 0.6rem;
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-align: center;
+}
+.oc-analysis-img { max-width: 100%; border: 1px solid #e5eadf; }
+
+/* ─── Prediction form ───────────────────────────────────── */
+.oc-form-header {
+    background: linear-gradient(135deg, var(--oc-primary) 0%, #388e3c 100%);
+    border-radius: 0.75rem 0.75rem 0 0 !important;
+}
+.oc-input { border-color: #dbe3d3; transition: border-color 0.2s, box-shadow 0.2s; }
+.oc-input:focus { border-color: var(--oc-secondary); box-shadow: 0 0 0 0.2rem rgba(46,125,50,0.15); }
+.oc-input.is-invalid { border-color: #dc2626; }
+
+/* ─── Buttons ───────────────────────────────────────────── */
+.oc-btn-primary {
+    background-color: var(--oc-secondary);
+    border: 1px solid var(--oc-secondary);
+    color: #fff;
+}
+.oc-btn-primary:hover { background-color: var(--oc-primary); border-color: var(--oc-primary); color: #fff; }
+.btn-outline-success { --bs-btn-color: var(--oc-secondary); --bs-btn-border-color: var(--oc-secondary); --bs-btn-hover-bg: var(--oc-secondary); --bs-btn-hover-border-color: var(--oc-secondary); }
+
+/* ─── Result page ───────────────────────────────────────── */
+.oc-result-card { border-radius: 1.5rem; color: #fff; }
+.oc-result-success { background: linear-gradient(135deg, #1b5e20 0%, #43a047 100%); box-shadow: 0 10px 30px rgba(27,94,32,0.25); }
+.oc-result-emoji { font-size: 4.5rem; line-height: 1; margin-bottom: 0.5rem; }
+.oc-conf-badge {
+    display: inline-flex; flex-direction: column; align-items: center;
+    background: rgba(255,255,255,0.2); border-radius: 1rem;
+    padding: 0.75rem 2.25rem; backdrop-filter: blur(4px);
+}
+.oc-conf-number { font-size: 2.4rem; font-weight: 800; line-height: 1; }
+.oc-conf-label { font-size: 0.8rem; opacity: 0.85; margin-top: 0.15rem; }
+
+.oc-fact-label { font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.5px; color: #8a978d; font-weight: 600; }
+.oc-fact-value { font-size: 1rem; font-weight: 600; color: #1f2a24; }
+.oc-tip-alert { background: #eef5e8; border: 1px solid #d6e6c9; color: #2f4a2f; border-radius: 0.75rem; }
+.oc-input-chip { background: #f4f7f0; border: 1px solid #e5eadf; border-radius: 0.6rem; padding: 0.6rem 0.75rem; }
+
+.oc-progress { height: 0.6rem; border-radius: 1rem; background: #eef1ea; }
+.oc-bar-primary { background: linear-gradient(90deg, #2e7d32, #66bb6a); }
+.oc-bar-muted { background: #c8d6bd; }
+
+/* ─── History table ─────────────────────────────────────── */
+.oc-table-header th {
+    background-color: var(--oc-primary); color: #fff;
+    font-weight: 600; font-size: 0.8rem; letter-spacing: 0.3px;
+    border: none; padding: 0.8rem 0.9rem;
+}
+table.table tbody tr:hover { background-color: #f0f7ea; }
+.oc-badge-conf { background-color: #dcedc8; color: var(--oc-primary); font-size: 0.8rem; padding: 0.4em 0.7em; }
+
+/* ─── Auth cards ────────────────────────────────────────── */
+.oc-auth-card { border-radius: 1.25rem !important; margin-top: 1rem; }
+.oc-auth-icon {
+    width: 60px; height: 60px; border-radius: 50%;
+    background: linear-gradient(135deg, var(--oc-primary), #43a047);
+    color: #fff; font-size: 1.6rem;
+    display: flex; align-items: center; justify-content: center;
+}
+.oc-auth-card .input-group-text { background-color: #f1f5ef; border-color: #dbe3d3; color: #64748b; }
+.oc-auth-card .form-control, .oc-auth-card .form-select { border-color: #dbe3d3; }
+.oc-auth-card .form-control:focus, .oc-auth-card .form-select:focus {
+    border-color: var(--oc-secondary); box-shadow: 0 0 0 0.2rem rgba(46,125,50,0.15);
+}
+
+/* ─── Footer ────────────────────────────────────────────── */
+.oc-footer { background: #eaf0e4; border-top: 1px solid #dbe3d3; }
+
+/* ─── Utility ───────────────────────────────────────────── */
+.card { border-radius: 1rem !important; }

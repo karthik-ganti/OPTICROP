@@ -1,0 +1,26 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.env
+
+# Virtual environments
+venv/
+env/
+.venv/
+
+# Databases (recreated on startup)
+*.db
+*.sqlite3
+instance/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Note: dataset/ and models/ are intentionally tracked so the project is
+# reproducible. Remove the trained *.pkl files here if you prefer not to
+# commit binaries.

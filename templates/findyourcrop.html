@@ -1,0 +1,93 @@
+{% extends "base.html" %}
+{% block title %}Find Your Crop — OptiCrop{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-lg-8">
+        <div class="card border-0 shadow-sm">
+            <div class="card-header oc-form-header py-3">
+                <h5 class="mb-0 text-white fw-bold">
+                    <i class="bi bi-search-heart me-2"></i>Find Your Crop
+                </h5>
+                <p class="mb-0 text-white opacity-75 small mt-1">
+                    Enter your soil nutrient levels and local climate conditions to get a recommendation.
+                </p>
+            </div>
+            <div class="card-body p-4 p-md-5">
+                <form method="POST" action="{{ url_for('predict') }}" id="predictionForm" novalidate>
+
+                    <h6 class="text-uppercase text-muted small fw-bold mb-3">
+                        <i class="bi bi-moisture me-1"></i>Soil Nutrients
+                    </h6>
+                    <div class="row g-4 mb-4">
+                        <div class="col-md-4">
+                            <label class="form-label fw-semibold" for="nitrogen">Nitrogen (N)</label>
+                            <input type="number" step="any" class="form-control oc-input" id="nitrogen"
+                                   name="nitrogen" placeholder="e.g. 90" min="0" max="200" required>
+                            <div class="form-text">kg/ha &middot; range 0 – 140</div>
+                        </div>
+                        <div class="col-md-4">
+                            <label class="form-label fw-semibold" for="phosphorus">Phosphorus (P)</label>
+                            <input type="number" step="any" class="form-control oc-input" id="phosphorus"
+                                   name="phosphorus" placeholder="e.g. 42" min="0" max="200" required>
+                            <div class="form-text">kg/ha &middot; range 5 – 145</div>
+                        </div>
+                        <div class="col-md-4">
+                            <label class="form-label fw-semibold" for="potassium">Potassium (K)</label>
+                            <input type="number" step="any" class="form-control oc-input" id="potassium"
+                                   name="potassium" placeholder="e.g. 43" min="0" max="250" required>
+                            <div class="form-text">kg/ha &middot; range 5 – 205</div>
+                        </div>
+                    </div>
+
+                    <h6 class="text-uppercase text-muted small fw-bold mb-3">
+                        <i class="bi bi-cloud-sun me-1"></i>Climate Conditions
+                    </h6>
+                    <div class="row g-4">
+                        <div class="col-md-6">
+                            <label class="form-label fw-semibold" for="temperature">Temperature (°C)</label>
+                            <input type="number" step="any" class="form-control oc-input" id="temperature"
+                                   name="temperature" placeholder="e.g. 20.8" min="0" max="50" required>
+                            <div class="form-text">Typical range: 8 – 44 °C</div>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label fw-semibold" for="humidity">Humidity (%)</label>
+                            <input type="number" step="any" class="form-control oc-input" id="humidity"
+                                   name="humidity" placeholder="e.g. 82" min="0" max="100" required>
+                            <div class="form-text">Relative humidity: 14 – 100 %</div>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label fw-semibold" for="ph">pH Level</label>
+                            <input type="number" step="any" class="form-control oc-input" id="ph"
+                                   name="ph" placeholder="e.g. 6.5" min="0" max="14" required>
+                            <div class="form-text">Soil pH: 0 – 14 (typical 3.5 – 10)</div>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label fw-semibold" for="rainfall">Rainfall (mm)</label>
+                            <input type="number" step="any" class="form-control oc-input" id="rainfall"
+                                   name="rainfall" placeholder="e.g. 202.9" min="0" max="400" required>
+                            <div class="form-text">Annual rainfall: 20 – 300 mm</div>
+                        </div>
+                    </div>
+
+                    <div class="d-grid mt-4">
+                        <button type="submit" class="btn oc-btn-primary btn-lg fw-semibold py-3" id="predictBtn">
+                            <i class="bi bi-magic me-2"></i>Recommend Crop
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <div class="card border-0 bg-light mt-3">
+            <div class="card-body py-3 px-4">
+                <p class="mb-0 small text-muted">
+                    <i class="bi bi-lightbulb me-1 text-success"></i>
+                    <strong>Tip:</strong> All seven fields are required. Not sure of a value? A basic soil test
+                    from your local agriculture office provides N, P, K and pH.
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
