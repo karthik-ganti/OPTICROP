@@ -22,6 +22,8 @@ temperature, humidity, pH and rainfall** — choosing among **22 crops**. It is 
 Forest classifier (**99.55% test accuracy**) and provides user accounts, per-user prediction
 history, and practical agronomic guidance for each recommendation.
 
+🔗 **Live Application:** https://opticrop-6zg1.onrender.com
+
 ## 2. Objectives
 
 - Turn measurable soil/climate readings into a specific, confident crop recommendation.

@@ -23,7 +23,8 @@ recommendation — from problem to model to live app.
 
 - [ ] `pip install -r requirements.txt` completed in a fresh venv.
 - [ ] `python train_model.py` run — confirm `models/model.pkl`, `scaler.pkl`, `metrics.txt` exist.
-- [ ] `python app.py` running at http://localhost:5000 (or live Render URL open).
+- [ ] `python app.py` running at http://localhost:5000 (or live Render URL open:
+      https://opticrop-6zg1.onrender.com).
 - [ ] A demo account created (or ready to register live).
 - [ ] Sample input values ready (see below).
 - [ ] `static/images/model_comparison.png` and `elbow_plot.png` available to show.

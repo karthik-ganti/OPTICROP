@@ -6,6 +6,8 @@ inputs — Nitrogen (N), Phosphorus (P), Potassium (K), temperature, humidity, p
 choosing among 22 crops. It is backed by a Random Forest classifier (99.55% test accuracy) and
 provides user accounts, prediction history and agronomic guidance.
 
+🔗 **Live App:** https://opticrop-6zg1.onrender.com
+
 This folder documents the project across the standard **8-phase AI/ML project lifecycle**.
 
 ## Team
